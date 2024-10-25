@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px); /* Configura 3 columnas de 100px cada una */
+    grid-template-rows: repeat(3, 100px);    /* Configura 3 filas de 100px cada una */
+    gap: 5px;                                /* Espacio entre cada celda */
+    width: max-content;
+    height: max-content;
+
+}
+
+.container p {
+    border: 2px solid #333;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container p:hover {
+    background-color: bisque;
+}
