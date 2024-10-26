@@ -1,11 +1,15 @@
+/**
+ * Inicializa una matriz 3x3 de forma aleatoria con números del 0 al 8.
+ * 
+ * Crea un array con números secuenciales del 0 al 8, luego mezcla los elementos
+ * de este array aleatoriamente y los coloca en una matriz de 3x3.
+ * 
+ * @returns {number[][]} Una matriz 3x3 con los números desordenados del 0 al 8.
+ */
 function inicializarMatrizAleatoria() {
-    // Generamos un arreglo con los números del 0 al 8
     let numeros = Array.from({ length: 9 }, (_, i) => i);
-
-    // Mezclamos los números
     numeros = numeros.sort(() => Math.random() - 0.5);
 
-    // Llenamos la matriz 3x3
     let matriz = [
         [numeros[0], numeros[1], numeros[2]],
         [numeros[3], numeros[4], numeros[5]],
@@ -15,18 +19,42 @@ function inicializarMatrizAleatoria() {
     return matriz;
 }
 
+/**
+ * Matriz bidimensional de identificadores de elementos HTML.
+ * 
+ * Accede a elementos HTML por su ID en una cuadrícula organizada.
+ */
 var ids = [
     ["id1", "id2", "id3"],
     ["id4", "id5", "id6"],
     ["id7", "id8", "id9"]
 ];
 
+/**
+ * Inicializa el juego al cargar la página.
+ * 
+ * Esta función se asigna al evento `window.onload`, por lo que se ejecutará
+ * una vez que todos los recursos de la página estén completamente cargados.
+ * 
+ * Pasos que realiza la función:
+ * - Llama a `inicializarMatrizAleatoria()` para generar una matriz 3x3 de números aleatorios.
+ * - Llama a `cargar()` para configurar los elementos HTML del juego.
+ * - Llama a `actualizarVista()` para actualizar la cuadrícula visualmente según la matriz generada.
+ */
 window.onload = function () {
     matriz = inicializarMatrizAleatoria();
     cargar();
     actualizarVista();
 };
 
+/**
+ * Configura cada celda de la cuadrícula del juego.
+ * 
+ * La función recorre una matriz de 3x3 (la cuadrícula del juego) y asocia 
+ * a cada elemento HTML un evento de clic (`onclick`) que permite mover las celdas.
+ * También establece atributos de posición ("fila" y "col") en cada elemento 
+ * para que luego se pueda identificar su ubicación en la matriz.
+ */
 function cargar() {
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
@@ -38,7 +66,13 @@ function cargar() {
     }
 }
 
-// Muestra los datos en los párrafos
+/**
+ * Actualiza visualmente cada celda de la cuadrícula de juego en función de los valores de `matriz`.
+ * 
+ * La función recorre una matriz de 3x3 y asigna el valor de cada posición en `matriz`
+ * al contenido de texto del elemento HTML correspondiente en la cuadrícula.
+ * Si el valor es `0`, deja la celda vacía para representar un espacio.
+ */
 function actualizarVista() {
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
