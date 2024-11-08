@@ -1,11 +1,4 @@
-/**
- * Inicializa una matriz 3x3 de forma aleatoria con números del 0 al 8.
- * 
- * Crea un array con números secuenciales del 0 al 8, luego mezcla los elementos
- * de este array aleatoriamente y los coloca en una matriz de 3x3.
- * 
- * @returns {number[][]} Una matriz 3x3 con los números desordenados del 0 al 8.
- */
+// Inicializa una matriz 3x3 de forma aleatoria con números del 0 al 8.
 function inicializarMatrizAleatoria() {
     let numeros = Array.from({ length: 9 }, (_, i) => i);
     numeros = numeros.sort(() => Math.random() - 0.5);
@@ -19,42 +12,25 @@ function inicializarMatrizAleatoria() {
     return matriz;
 }
 
-/**
- * Matriz bidimensional de identificadores de elementos HTML.
- * 
- * Accede a elementos HTML por su ID en una cuadrícula organizada.
- */
+// Matriz bidimensional de las id's del HTML.
 var ids = [
     ["id1", "id2", "id3"],
     ["id4", "id5", "id6"],
     ["id7", "id8", "id9"]
 ];
 
-/**
- * Inicializa el juego al cargar la página.
- * 
- * Esta función se asigna al evento `window.onload`, por lo que se ejecutará
- * una vez que todos los recursos de la página estén completamente cargados.
- * 
- * Pasos que realiza la función:
- * - Llama a `inicializarMatrizAleatoria()` para generar una matriz 3x3 de números aleatorios.
- * - Llama a `cargar()` para configurar los elementos HTML del juego.
- * - Llama a `actualizarVista()` para actualizar la cuadrícula visualmente según la matriz generada.
- */
+
+// Ejecuta el juego al cargar la página cuando todos los recursos están cargados
+
 window.onload = function () {
     matriz = inicializarMatrizAleatoria();
     cargar();
     actualizarVista();
 };
 
-/**
- * Configura cada celda de la cuadrícula del juego.
- * 
- * La función recorre una matriz de 3x3 (la cuadrícula del juego) y asocia 
- * a cada elemento HTML un evento de clic (`onclick`) que permite mover las celdas.
- * También establece atributos de posición ("fila" y "col") en cada elemento 
- * para que luego se pueda identificar su ubicación en la matriz.
- */
+
+// Asocia cada elemento del HTML al evento onclick para mover las celdas e identifica los elementos fila y col en la matriz
+
 function cargar() {
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
