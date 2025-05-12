@@ -133,63 +133,6 @@ function detenerCronometro() {
 }
 
 
-function verificarUsuario(){
-    const isAuthenticated = document.body.getAttribute("data-authenticated") === "true";
-    const userId = document.body.getAttribute("data-user-id");
-    const juegoId = document.body.getAttribute("data-game-id");
-  
-    console.log("Autenticado:", isAuthenticated);
-    console.log("ID de Usuario:", userId);
-    console.log("ID del Juego:", juegoId);
-  
-    // Si el usuario no está autenticado, muestra el mensaje y termina la ejecución
-    if (!isAuthenticated) {
-        console.log("User no identificado");
-      return null; // Salir si el usuario no está autenticado
-    }
-  
-    // Verificar si los valores de juegoId y userId están definidos
-    if (!juegoId || !userId) {
-      console.error("Error: ID del juego o del usuario no definido.");
-      return null; // Salir si alguno de los IDs no está definido
-    }
-
-    return { userId, juegoId };
-
-}
-
-function guardarPuntuacion(userId, juegoId, tiempoFormateado){
-    fetch("/api/ranking/insertRanking.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams({
-          usuario_idUsuario: userId,
-          juegos_idJuego: juegoId,
-          puntuacion: tiempoFormateado  // El tiempo es la puntuación
-        }),
-      })
-      .then((response) => {
-            // Verificamos si la respuesta fue exitosa
-            if (!response.ok) {
-                throw new Error(`Error en la solicitud: ${response.statusText}`);
-            }
-            return response.json(); // Si la respuesta fue exitosa, convertimos a JSON
-        })
-        .then((data) => {
-          if (data.success) {
-            console.log(`¡Puntuación guardada con éxito! Tiempo: ${tiempoFormateado}`);
-          } else {
-            console.log(`Error al guardar la puntuación: ${data.message}`);
-          }
-        })
-        .catch((error) => {
-          console.error("Error al guardar la puntuación:", error);
-          console.log("Ocurrió un error al intentar guardar tu puntuación.");
-        });
-}
-
 /**
  * Actualiza el contador de clicks en el DOM.
  */
@@ -466,32 +409,9 @@ function mostrarModalVictoria(tiempoFormateado) {
 
     const modal = document.getElementById("ventanaVictoria");
     modal.style.display = "flex";
-    
-    const pepe =  document.getElementById("btnReiniciar");
-
-    // Obtener el userId y juegoId desde verificarUsuario
-    const usuarioData = verificarUsuario();
-    if (!usuarioData) {
-        alert("No se pudo obtener los datos del usuario.");
-        return; // Si no se obtienen los datos del usuario, no continuamos
-    }
-
-    const { userId, juegoId } = usuarioData;
 
     document.getElementById("btnReiniciar").addEventListener("click", () => {
         location.reload();
-    });
-
-    document.getElementById("btnRanking").addEventListener("click", () => {
-        verificarUsuario();
-        guardarPuntuacion(userId, juegoId, tiempoFormateado);
-        location.assign("../../html/ranking.php"); 
-    });
-
-    document.getElementById("btnFuentes").addEventListener("click", () => {
-        verificarUsuario();
-        guardarPuntuacion(userId, juegoId, tiempoFormateado);
-        location.assign("../../html/fuentes.php");
     });
 }
 
