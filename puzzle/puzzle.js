@@ -343,8 +343,15 @@ function crearContenedorResuelto() {
     resuelto.style.transform = "translate(-50%, -50%)";
     resuelto.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
     resuelto.style.zIndex = "9999";
-    resuelto.style.padding = "20px";
+    resuelto.style.padding = "4vw 2vw";
     resuelto.style.borderRadius = "10px";
+    resuelto.style.maxWidth = "96vw";
+    resuelto.style.width = "auto";
+    resuelto.style.maxHeight = "90vh";
+    resuelto.style.boxSizing = "border-box";
+    resuelto.style.display = "flex";
+    resuelto.style.flexDirection = "column";
+    resuelto.style.alignItems = "center";
     return resuelto;
 }
 
@@ -358,9 +365,13 @@ function crearImagenResuelta(imagenPistaSeleccionada) {
     const imgResuelto = document.createElement("img");
     imgResuelto.src = imagenPistaSeleccionada;
     imgResuelto.alt = "Puzzle Resuelto";
-    imgResuelto.style.maxWidth = "28vw";
-    imgResuelto.style.height = "55vh";
+    imgResuelto.style.maxWidth = "80vw";
+    imgResuelto.style.width = "100%";
+    imgResuelto.style.height = "auto";
+    imgResuelto.style.maxHeight = "60vh";
     imgResuelto.style.border = "2px solid white";
+    imgResuelto.style.borderRadius = "8px";
+    imgResuelto.style.display = "block";
     return imgResuelto;
 }
 
