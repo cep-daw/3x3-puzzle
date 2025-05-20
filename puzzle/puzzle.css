@@ -154,18 +154,24 @@
 
 .ventanaVictoria{
     display: none;
-    width: 28vw;
-    height: 55vh;
+    width: 90vw;
+    max-width: 400px;
+    height: auto;
+    min-height: 220px;
+    max-height: 80vh;
     position: fixed;
-    margin:auto;
-    border-radius: 75px;
-    top: 47%;
+    margin: auto;
+    border-radius: 32px;
+    top: 50%;
     left: 50%;
-    background-color: rgba(255, 255, 255, 0.884);
+    background-color: rgba(255, 255, 255, 0.95);
     z-index: 1000;
     transform: translate(-50%, -50%);
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
+    padding: 24px 16px 16px 16px;
+    overflow-y: auto;
 }
 .v-titulo{
     font-family: "Handlee", cursive;
@@ -183,7 +189,7 @@
     margin-top: 20px;
 }
 
-.v-botones button{
+#btnReiniciar{
     margin: 50px 10px;
     padding: 10px 20px;
     font-size: 16px;
@@ -195,7 +201,7 @@
     transition: background-color 0.3s ease;
 }
 
-.v-botones button:hover {
+#btnReiniciar:hover {
     background-color: #0A1576;
 }
 
@@ -231,6 +237,23 @@
     .containerPuzzle div {
         width: 90px;
         height: 90px;
+    }
+    .ventanaVictoria {
+        width: 50vw;
+        max-width: 98vw;
+        min-height: 160px;
+        border-radius: 18px;
+        padding: 12px 4vw 12px 4vw;
+    }
+    .v-titulo {
+        font-size: 1.5rem;
+        margin-left: 0;
+        text-align: center;
+    }
+    #mensajeTiempo {
+        margin-left: 0;
+        font-size: 1rem;
+        text-align: center;
     }
 
 }
