@@ -150,25 +150,36 @@ function actualizarContadorClicks() {
  * Muestra un popup (tooltip) con la imagen de la solución y lo oculta al retirar el ratón.
  */
 function pistaBombilla() {
-    const pista = document.getElementById("pista");
+    const btnPista = document.getElementById("btnPista");
     const pistaPopup = document.getElementById("pistaPopup");
-    
-    if (!pista || !pistaPopup) {
-        console.error("Elementos 'pista' o 'pistaPopup' no encontrados.");
-        return;
-    }
+    const pistaOverlay = document.getElementById("pistaOverlay");
 
-    // Mostrar el popup al pasar el mouse
-    pista.addEventListener("mouseenter", () => {
-        pistaPopup.style.display = "block";
+    if (!btnPista || !pistaPopup || !pistaOverlay) return;
+
+    // Ocultar popup y overlay si se hace click fuera
+    document.addEventListener("click", function (e) {
+        if (
+            pistaPopup.style.display === "block" &&
+            !btnPista.contains(e.target) &&
+            !pistaPopup.contains(e.target)
+        ) {
+            pistaPopup.style.display = "none";
+            pistaOverlay.style.display = "none";
+        }
     });
 
-    // Ocultar el popup al salir el mouse
-    pista.addEventListener("mouseleave", () => {
+    btnPista.addEventListener("click", function (e) {
+        e.stopPropagation();
+        const isVisible = pistaPopup.style.display === "block";
+        pistaPopup.style.display = isVisible ? "none" : "block";
+        pistaOverlay.style.display = isVisible ? "none" : "block";
+    });
+
+    pistaOverlay.addEventListener("click", function () {
         pistaPopup.style.display = "none";
+        pistaOverlay.style.display = "none";
     });
-    
-};
+}
 
 /**
  * Actualiza visualmente la cuadrícula del puzzle en la interfaz.
