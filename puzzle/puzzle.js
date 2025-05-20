@@ -7,16 +7,16 @@ let tiempoFormateado;
 
 //Rutas a las carpetas de imágenes del puzzle.
 const carpetasImagenes = [
-    "../puzzle/img/3x3/set1/",
-    "../puzzle/img/3x3/set2/",
-    "../puzzle/img/3x3/set3/"
+    "./img/3x3/set1/",
+    "./img/3x3/set2/",
+    "./img/3x3/set3/"
 ];
 
 // Rutas a las imágenes que muestran el puzzle completo.
 const imagenesPistas = [
-    "../puzzle/img/pistas/set1_pista.jpg",
-    "../puzzle/img/pistas/set2_pista.jpg",
-    "../puzzle/img/pistas/set3_pista.jpg"
+    "./img/pistas/set1_pista.jpg",
+    "./img/pistas/set2_pista.jpg",
+    "./img/pistas/set3_pista.jpg"
 ];
 
 //Selecciona aleatoriamente una carpeta de imágenes y su correspondiente pista.
