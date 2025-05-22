@@ -11,14 +11,14 @@ El objetivo del juego es reorganizar las piezas numeradas del 1 al 8 en orden as
 - Código modular y fácil de entender para fines educativos.
 
 ## 🧱 Estructura del Proyecto
-
+```
 3x3-puzzle/
 ├── img/             # Imágenes utilizadas en el juego
 ├── index.html       # Página principal del juego
 ├── puzzle.css       # Estilos del juego
 ├── puzzle.js        # Lógica del juego
 └── README.md        # Documentación del proyecto
-
+```
 ## 🚀 Cómo Ejecutar el Juego
 
 1. **Clonar el repositorio:**
